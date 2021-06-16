@@ -12,7 +12,9 @@ const MyStack = () => (
     <Stack.Screen
       name="Home"
       options={{
-        headerTitle: () => <IGNLogo style={styles.logo} />,
+        // headerTitle: () => <IGNLogo style={styles.logo} />,
+        // TODO Logo
+        headerTitle: () => <IGNLogo />
       }}
       component={MyTabs}
     />
