@@ -8,7 +8,7 @@ export enum APIEndpoints {
   VIDEOS = "/videos"
 }
 
-export const makeAPIRequest = async (endPoint: APIEndpoints, method: Method ): Promise<any> => {
-  const responseData = await axios.get(`${API_BASE_URL}${endPoint}`, { method })
+export const makeAPIRequest = async (endPoint: APIEndpoints, method: Method, queryParamString: string = ""): Promise<any> => {
+  const responseData = await axios.get(`${API_BASE_URL}${endPoint}${queryParamString}`, { method })
   return responseData.data
 }
