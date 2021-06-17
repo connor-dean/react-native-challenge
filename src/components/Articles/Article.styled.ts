@@ -1,12 +1,11 @@
 import { Image, Text, View } from "react-native"
 import styled from "styled-components/native"
+import { IGN_RED } from "../../theme"
 
 type ThumbnailProps = {
   height: number
   width: number
 }
-
-const IGN_RED = "#BF1312"
 
 const Container = styled(View)`
   margin: 5px;

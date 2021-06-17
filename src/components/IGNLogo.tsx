@@ -3,6 +3,8 @@ import Svg, { Path } from "react-native-svg";
 
 type IGNLogoProps = {
   color?: string
+  height?: number
+  width?: number
 }
 
 const IGNLogo: React.FC<IGNLogoProps> = ({ color, ...rest }) => (

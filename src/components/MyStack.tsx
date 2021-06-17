@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import IGNLogo from "./IGNLogo";
 import MyTabs from "./MyTabs";
+import { IGN_RED } from "../theme";
 
 const Stack = createStackNavigator();
 
@@ -12,20 +12,14 @@ const MyStack = () => (
     <Stack.Screen
       name="Home"
       options={{
-        // headerTitle: () => <IGNLogo style={styles.logo} />,
-        // TODO Logo
-        headerTitle: () => <IGNLogo />
+        headerStyle: {
+          backgroundColor: IGN_RED
+        },
+        headerTitle: () => <IGNLogo height={20} width={60} color="white" />
       }}
       component={MyTabs}
     />
   </Stack.Navigator>
 );
-
-const styles = StyleSheet.create({
-  logo: {
-    height: 20,
-    width: 60,
-  },
-});
 
 export default MyStack;
