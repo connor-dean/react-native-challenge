@@ -6,16 +6,28 @@ type ThumbnailProps = {
   width: number
 }
 
+const IGN_RED = "#BF1312"
+
+const Container = styled(View)`
+  margin: 5px;
+`
+
+const TimeAgoText = styled(Text)`
+  text-transform: uppercase;
+  margin: 15px;
+  color: ${IGN_RED};
+  font-size: 10px;
+  font-weight: 900;
+`
+
 const ArticleCardContainer = styled(View)`
   display: flex;
   flex-direction: column;
   border: 2px solid lightgray;
   border-radius: 5px;
   padding: 15px;
-  margin: 5px;
 `
 
-// TODO do we need this?
 const HeadlineContainer = styled(View)`
   display: flex;
 `
@@ -81,14 +93,14 @@ const NetworkLabelContainer = styled(View)`
   display: flex;
   width: auto;
   border-bottom-width: 3px;
-  border-bottom-color: red;
+  border-bottom-color: ${IGN_RED};
   padding-bottom: 2px;
 `
 
 const NetworkLabel = styled(Text)`
-  color: red;
+  color: ${IGN_RED};
   font-weight: 800;
-  text-decoration-color: red;
+  text-decoration-color: ${IGN_RED};
   text-transform: capitalize;
   letter-spacing: 1px;
   font-size: 12px;
@@ -99,6 +111,8 @@ const CommentCount = styled(Text)`
 `
 
 export {
+  Container,
+  TimeAgoText,
   ArticleCardContainer,
   HeadlineContainer,
   HeadlineText,

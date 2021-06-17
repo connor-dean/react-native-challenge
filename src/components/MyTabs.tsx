@@ -1,5 +1,5 @@
 import React from "react";
-import { BottomTabBarOptions, BottomTabNavigationOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { BottomTabBarOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import ArticlesFeed from "./Articles/ArticlesFeed";
 import VideosFeed from "./VideosFeed";
@@ -10,13 +10,13 @@ const Tab = createBottomTabNavigator();
 // TODO
 const headerBarOptions: StackNavigationOptions = {
   headerStyle: {
-    backgroundColor: "red"
+    backgroundColor: "#BF1312"
   }
 }
 
 // TODO change fontWeight on selection
 const sharedTabBarOptions: BottomTabBarOptions = {
-  activeTintColor: "red",
+  activeTintColor: "#BF1312",
   inactiveTintColor: "grey",
   tabStyle: {
     display: "flex",

@@ -30,6 +30,7 @@ export interface ArticleType {
   authors: ArticleAuthor[]
   networks: string[]
   commentCount: number
+  publishDate: string
 }
 
 const ArticlesFeed: React.FC = () => {
@@ -47,7 +48,6 @@ const ArticlesFeed: React.FC = () => {
     }
 
     const getArticles = async () => {
-      console.log("fetched")
       const articlesResponse = await makeAPIRequest(APIEndpoints.ARTICLES, "GET")
 
       const articleIds = articlesResponse.data.map((article: any) => article.contentId)
@@ -68,6 +68,7 @@ const ArticlesFeed: React.FC = () => {
           authors: article.authors.length ? article.authors : [],
           networks: article.metadata.networks.length ? article.metadata.networks : [],
           commentCount: comment?.count,
+          publishDate: article.metadata.publishDate
         }
       })
 
