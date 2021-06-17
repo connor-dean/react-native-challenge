@@ -9,6 +9,7 @@ import {
   Description,
   AuthorContainer,
   AuthorThumbnail,
+  ByText,
   AuthorName,
   BottomContainer,
   NetworkLabelContainer,
@@ -62,8 +63,9 @@ const Article: React.FC<ArticleProps> = ({
               {!!authors[0].thumbnail && (
                 <AuthorThumbnail source={{ uri: authors[0].thumbnail }} />
               )}
+              <ByText>By </ByText>
               <AuthorName>
-                By {authors[0].name}
+                {authors[0].name}
               </AuthorName>
             </AuthorContainer>
           )}

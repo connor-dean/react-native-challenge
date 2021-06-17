@@ -61,8 +61,13 @@ const AuthorThumbnail = styled(Image)`
   margin-right: 10px;
 `
 
+const ByText = styled(Text)`
+  font-weight: 700;
+`
+
 const AuthorName = styled(Text)`
   font-weight: 600;
+  text-decoration: underline;
 `
 
 const BottomContainer = styled(View)`
@@ -103,6 +108,7 @@ export {
   Description,
   AuthorContainer,
   AuthorThumbnail,
+  ByText,
   AuthorName,
   BottomContainer,
   NetworkLabelContainer,
