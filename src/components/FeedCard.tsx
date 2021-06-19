@@ -17,16 +17,16 @@ import {
   NetworkLabel,
   CommentCount,
   TimeAgoText
-} from "./Article.styled"
-import { ArticleType } from "./ArticlesFeed"
+} from "./FeedCard.styled"
 import dayjs from "dayjs"
+import { ContentFeedDTO } from "./ContentFeed"
 
-type ArticleProps = {
-  article: ArticleType
+type FeedCardProps = {
+  content: ContentFeedDTO
 }
 
-const Article: React.FC<ArticleProps> = ({
-  article: {
+const FeedCard: React.FC<FeedCardProps> = ({
+  content: {
     headline,
     smallThumbnail,
     description,
@@ -67,6 +67,7 @@ const Article: React.FC<ArticleProps> = ({
             {headline}
           </HeadlineText>
           <ThumbnailContainer>
+            {/* Would typically render image sizes based off device dimensions */}
             <Thumbnail
               source={{ uri: smallThumbnail.url }}
               width={smallThumbnail.width}
@@ -83,7 +84,7 @@ const Article: React.FC<ArticleProps> = ({
               Would typically try to ask how we would want to display
               multiple authors/networks or how to prioritize.
             */}
-            {authors.length > 0 && (
+            {authors && authors.length > 0 && (
               <AuthorContainer>
                 {!!authors[0].thumbnail && (
                   <AuthorThumbnail source={{ uri: authors[0].thumbnail }} />
@@ -115,4 +116,4 @@ const Article: React.FC<ArticleProps> = ({
   )
 }
 
-export default Article
+export default FeedCard

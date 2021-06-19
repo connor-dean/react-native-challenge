@@ -1,40 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { APIEndpoints, makeAPIRequest } from "../../utils/networkRequest";
-import Article from "./Article";
-import { ScrollingContainer } from "./ArticlesFeed.styled";
-
-interface ArticleThumbnail {
-  height: number,
-  size: "small" | "medium" | "large",
-  url: string,
-  width: number,
-}
-
-interface ArticleAuthor {
-  name?: string
-  thumbnail?: string
-}
-
-interface CommentCount {
-  id: string
-  count: number
-}
-
-export interface ArticleType {
-  id: string
-  headline: string
-  smallThumbnail: ArticleThumbnail
-  mediumThumbnail: ArticleThumbnail
-  largeThumbnail: ArticleThumbnail
-  description: string | null
-  authors: ArticleAuthor[]
-  networks: string[]
-  commentCount: number
-  publishDate: string
-}
+import React from "react"
+import { useState, useEffect } from "react"
+import { makeAPIRequest, APIEndpoints } from "../utils/networkRequest"
+import ContentFeed, { CommentCount, ContentFeedDTO } from "./ContentFeed"
 
 const ArticlesFeed: React.FC = () => {
-  const [articles, setArticles] = useState<ArticleType[]>([])
+  const [articles, setArticles] = useState<ContentFeedDTO[]>([])
 
   useEffect(() => {
     const getCommentCounts = async (articleIds: string[]): Promise<CommentCount[]> => {
@@ -53,13 +23,17 @@ const ArticlesFeed: React.FC = () => {
       const articleIds = articlesResponse.data.map((article: any) => article.contentId)
       const commentCounts: CommentCount[] = await getCommentCounts(articleIds)
 
-      // TODO cleaner way to map thumbnails
-      const mappedArticles: ArticleType[] = articlesResponse.data.map((article: any) => {
-        // TODO this could be optimized
+      const mappedArticles: ContentFeedDTO[] = articlesResponse.data.map((article: any) => {
         const comment = commentCounts.find((comment) => article.contentId === comment.id)
+
+        /**
+         * Questions:
+         * - Would the API always return these thumbnails in this order or would they have to be manually mapped?
+         */
 
         return {
           id: article.contentId,
+          contentType: article.contentType,
           headline: article.metadata.headline,
           smallThumbnail: article.thumbnails[0],
           mediumThumbnail: article.thumbnails[1],
@@ -79,16 +53,8 @@ const ArticlesFeed: React.FC = () => {
   }, [])
 
   return (
-    <ScrollingContainer>
-      {articles.length ? (
-        articles.map((article: ArticleType) => {
-          return (
-            <Article article={article} key={article.id} />
-          )
-        })
-      ): null}
-    </ScrollingContainer>
+    <ContentFeed feedContent={articles} />
   )
-};
+}
 
-export default ArticlesFeed;
+export default ArticlesFeed

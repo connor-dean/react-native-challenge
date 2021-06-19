@@ -1,7 +1,7 @@
 import React from "react";
 import { BottomTabBarOptions, createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import ArticlesFeed from "./Articles/ArticlesFeed";
+import ArticlesFeed from "./ArticlesFeed";
 import VideosFeed from "./VideosFeed";
 import { StackNavigationOptions } from "@react-navigation/stack";
 

@@ -1,6 +1,6 @@
 import { Image, Text, View } from "react-native"
 import styled from "styled-components/native"
-import { IGN_RED } from "../../theme"
+import { IGN_RED } from "../theme"
 
 type ThumbnailProps = {
   height: number
