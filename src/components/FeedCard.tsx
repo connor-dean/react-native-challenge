@@ -58,6 +58,10 @@ const FeedCard: React.FC<FeedCardProps> = ({
 
   const publishTimeText = formatPublishTime()
 
+  /**
+   * Couldn't figure out how to construct the URL from the API response
+   * so just hardcoded ign.com
+   */
   const openWebView = () => {
     navigation.navigate("Web", {
       url: "http://ign.com"
