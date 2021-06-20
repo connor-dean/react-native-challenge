@@ -16,10 +16,12 @@ import {
   NetworkLabelContainer,
   NetworkLabel,
   CommentCount,
-  TimeAgoText
+  TimeAgoText,
+  CommentCountContainer
 } from "./FeedCard.styled"
 import dayjs from "dayjs"
 import { ContentFeedDTO } from "./ContentFeed"
+import { useNavigation } from "@react-navigation/native"
 
 type FeedCardProps = {
   content: ContentFeedDTO
@@ -36,6 +38,8 @@ const FeedCard: React.FC<FeedCardProps> = ({
     publishDate
   }
 }) => {
+  const navigation = useNavigation()
+
   const formatPublishTime = (): string | undefined => {
     const publishDateDayJs = dayjs(publishDate)
 
@@ -54,6 +58,12 @@ const FeedCard: React.FC<FeedCardProps> = ({
 
   const publishTimeText = formatPublishTime()
 
+  const openWebView = () => {
+    navigation.navigate("Web", {
+      url: "http://ign.com"
+    })
+  }
+
   return (
     <Container>
       {publishTimeText && (
@@ -61,7 +71,7 @@ const FeedCard: React.FC<FeedCardProps> = ({
           {publishTimeText}
         </TimeAgoText>
       )}
-      <ArticleCardContainer>
+      <ArticleCardContainer onPress={openWebView}>
         <HeadlineContainer>
           <HeadlineText>
             {headline}
@@ -104,9 +114,11 @@ const FeedCard: React.FC<FeedCardProps> = ({
                 </NetworkLabelContainer>
               )}
               {commentCount >= 0 && (
-                <CommentCount>
-                  {`${commentCount}`}
-                </CommentCount>
+                <CommentCountContainer onPress={(e) => e.preventDefault()} disabled>
+                  <CommentCount suppressHighlighting>
+                    {`${commentCount}`}
+                  </CommentCount>
+                </CommentCountContainer>
               )}
             </BottomContainer>
           </DescriptionAuthorContainer>

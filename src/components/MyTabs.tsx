@@ -4,19 +4,18 @@ import { BottomTabBarOptions, createBottomTabNavigator } from "@react-navigation
 import ArticlesFeed from "./ArticlesFeed";
 import VideosFeed from "./VideosFeed";
 import { StackNavigationOptions } from "@react-navigation/stack";
+import { IGN_RED } from "../theme";
 
 const Tab = createBottomTabNavigator();
 
-// TODO
 const headerBarOptions: StackNavigationOptions = {
   headerStyle: {
-    backgroundColor: "#BF1312"
+    backgroundColor: IGN_RED
   }
 }
 
-// TODO change fontWeight on selection
 const sharedTabBarOptions: BottomTabBarOptions = {
-  activeTintColor: "#BF1312",
+  activeTintColor: IGN_RED,
   inactiveTintColor: "grey",
   tabStyle: {
     display: "flex",
@@ -26,7 +25,7 @@ const sharedTabBarOptions: BottomTabBarOptions = {
   labelStyle: {
     fontSize: 24,
     fontWeight: "500",
-    paddingVertical: 20
+    paddingVertical: 40
   },
 }
 

@@ -1,4 +1,4 @@
-import { Image, Text, View } from "react-native"
+import { Image, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native"
 import styled from "styled-components/native"
 import { IGN_RED } from "../theme"
 
@@ -19,7 +19,7 @@ const TimeAgoText = styled(Text)`
   font-weight: 900;
 `
 
-const ArticleCardContainer = styled(View)`
+const ArticleCardContainer = styled(TouchableOpacity)`
   display: flex;
   flex-direction: column;
   border: 2px solid lightgray;
@@ -105,6 +105,8 @@ const NetworkLabel = styled(Text)`
   font-size: 12px;
 `
 
+const CommentCountContainer = styled(TouchableWithoutFeedback)``
+
 const CommentCount = styled(Text)`
   font-weight: 700;
 `
@@ -126,5 +128,6 @@ export {
   BottomContainer,
   NetworkLabelContainer,
   NetworkLabel,
+  CommentCountContainer,
   CommentCount
 }
