@@ -73,9 +73,11 @@ const FeedCard: React.FC<FeedCardProps> = ({
       )}
       <ArticleCardContainer onPress={openWebView}>
         <HeadlineContainer>
-          <HeadlineText>
-            {headline}
-          </HeadlineText>
+          {headline && (
+            <HeadlineText>
+              {headline}
+            </HeadlineText>
+          )}
           <ThumbnailContainer>
             {/* Would typically render image sizes based off device dimensions */}
             <Thumbnail

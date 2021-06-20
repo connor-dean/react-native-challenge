@@ -16,7 +16,7 @@ export type MyStackParamsList = {
 const Stack = createStackNavigator<MyStackParamsList>();
 
 const MyStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
     <Stack.Screen
       name="Home"
       options={{
